@@ -6,11 +6,20 @@ const Formulario = () => {
   const [name, setName] = useState("");
   const [mail, setMail] = useState("");
   const [phone, setPhone] = useState("");
-  console.log(name);
+  // console.log(name);
   //para usar validator primero lo instalamos con npm i validator. Despues tenemos que importarlo como import validator from 'validator';
 
+  const [startValidationName, setStartValidationName] = useState(true);
+
+  const validateName = (n) => {
+    return (
+      validator.matches(n, "^[a-zA-Z ]*$") &&
+      validator.isLength(n, { min: 0, max: 26 })
+    );
+  };
+  const containerColor = { backgroundColor: "lightgreen" };
   return (
-    <Container>
+    <Container style={containerColor}>
       <Card className="mt-5">
         <Card.Header>
           <h3>Mi Carrito</h3>
@@ -31,10 +40,13 @@ const Formulario = () => {
                 type="text"
                 placeholder="Ingresa tu nombre completo"
                 onInput={(e) => setName(e.target.value)}
+                onBlur={() => setStartValidationName(false)}
               />
-              <Form.Text className="text-danger">
-                Porfavor ingresa tu nombre
-              </Form.Text>
+              {!validateName(name) && !startValidationName && (
+                <Form.Text className="text-danger">
+                  Porfavor ingresa tu nombre
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
