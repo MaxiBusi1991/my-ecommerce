@@ -14,7 +14,7 @@ const Header = () => {
               height="30"
               className="d-inline-block align-top"
             />{" "}
-            React Bootstrap
+            Bazar Yapur
           </Navbar.Brand>
         </Container>
       </Navbar>
