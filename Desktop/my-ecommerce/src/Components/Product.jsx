@@ -1,18 +1,32 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { useState } from "react";
+import { Card, Button, Container } from "react-bootstrap";
+import Contador from "./Contador";
 
 const Product = ({ d }) => {
+  const [contador, setContador] = useState(1);
   return (
     <>
-      <Card className="mt-3">
-        <Card.Img variant="top" src={d.image} height={250} width={250} />
-        <Card.Body>
-          <Card.Title>{d.title}</Card.Title>
-          <Card.Text>{d.description}</Card.Text>
-        </Card.Body>
-        <Card.Footer> {d.price} </Card.Footer>
-        <Card.Footer> {d.price} </Card.Footer>
-      </Card>
+      <Container>
+        <Card className="p-0">
+          <Card.Img
+            variant="top"
+            className="p-3"
+            src={d.image}
+            height={250}
+            width={250}
+          />
+          <Card.Body>
+            <Card.Title>{d.title}</Card.Title>
+            <Card.Text>{d.description}</Card.Text>
+          </Card.Body>
+          <Card.Footer> {d.price} </Card.Footer>
+          <Card.Footer>
+            <Button>Ir al producto</Button>
+          </Card.Footer>
+          <Contador contador={contador} setter={setContador} />
+        </Card>
+      </Container>
     </>
   );
 };
