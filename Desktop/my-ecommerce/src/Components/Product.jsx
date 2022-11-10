@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Card, Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import Contador from "./Contador";
 
 const Product = ({ d }) => {
@@ -22,7 +23,9 @@ const Product = ({ d }) => {
           </Card.Body>
           <Card.Footer> {d.price} </Card.Footer>
           <Card.Footer>
-            <Button>Ir al producto</Button>
+            <Link to={`/product/${d.id}`}>
+              <Button>Ir al producto</Button>
+            </Link>
           </Card.Footer>
           <Contador contador={contador} setter={setContador} />
         </Card>
