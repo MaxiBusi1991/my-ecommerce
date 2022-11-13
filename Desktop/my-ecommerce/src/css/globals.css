@@ -6,3 +6,9 @@ body {
 .icon-size {
   size: 2em;
 }
+
+.body-bg {
+  background-color: aqua;
+}
+
+/* averriguar como estilar las cosas, me da un error! */
